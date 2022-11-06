@@ -7,6 +7,9 @@
 3. `pip install -r requirements.txt`
 4. `make run`
 
+To then deactivate virtual environment
+`deactivate`
+
 ## Tutorial to Flask
 
 - example: https://github.com/pallets/flask/tree/main/examples/tutorial

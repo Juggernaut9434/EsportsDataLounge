@@ -1,10 +1,9 @@
 from configparser import ConfigParser
-import psycopg2
 import os
 
 def config(filename="database.ini"):
     parser = ConfigParser()
-    path = os.path.join('..', filename)
+    path = os.path.join(filename)
     parser.read(path)
 
     db = {}
@@ -15,14 +14,3 @@ def config(filename="database.ini"):
         db[param[0]] = param[1]     # db['host'] = 'localhost'
 
     return db
-
-def connect_db():
-    conn = None
-    try:
-        conn = psycopg2.connect(**config())
-    except(Exception, psycopg2.DatabaseError) as error:
-        print(error)
-
-    finally:
-        conn.close()
-        print("Database connection closed on error.")

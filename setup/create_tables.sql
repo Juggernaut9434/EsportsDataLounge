@@ -1,6 +1,6 @@
--- DROP TABLE IF EXISTS public."EsportsEarnings";
+-- DROP TABLE IF EXISTS public."esportsearnings";
 
-CREATE TABLE IF NOT EXISTS public."EsportsEarnings"
+CREATE TABLE IF NOT EXISTS public."esportsearnings"
 (
     "Game" character varying(100) COLLATE pg_catalog."default" NOT NULL,
     "ReleaseDate" integer,
@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS public."EsportsEarnings"
 
 TABLESPACE pg_default;
 
---ALTER TABLE IF EXISTS public."EsportsEarnings"
+--ALTER TABLE IF EXISTS public."esportsearnings"
 --    OWNER to mike;

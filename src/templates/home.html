@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <h1>Home Page</h1>
-    </body>
-</html>
+{% extends "layout.html" %}
+
+{% block content %}
+    <table id="data" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game in games %}
+                <tr>
+                    <td{{ game[0] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

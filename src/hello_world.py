@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 
+from src.database_connection import Database
+
 app = Flask(__name__)
+db = Database()
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -9,4 +12,8 @@ def page_not_found(e):
 
 @app.route("/")
 def hello_world():
-    return render_template("home.html")
+    # make query before hand here
+    games = db.hello_world()
+    print(games)
+    # pass it into the render_template
+    return render_template("home.html", games=games)

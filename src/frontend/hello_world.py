@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from src.database_connection import Database
+from ..backend import Database
 
 app = Flask(__name__)
 db = Database()

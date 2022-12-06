@@ -1,5 +1,5 @@
 import psycopg2
-from src.config import config
+from .config import config
 
 class Database():
     conn = None
@@ -18,6 +18,9 @@ class Database():
         except(Exception, psycopg2.DatabaseError) as error:
             print(error)
             self.close_connection()
+
+    def __del__(self):
+        self.close_connection()
 
     def close_connection(self):
         if self.conn is not None and not self.conn.closed:
@@ -41,5 +44,4 @@ class Database():
 
 if __name__ == '__main__':
     db = Database()
-    db.hello_world()
     db.close_connection()

@@ -1,5 +1,75 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <div class="chart" style="width: 800px;">
+        <h1>Total Earnings by Genre</h1>
+        <canvas id="earning_bar_chart"></canvas>
+    </div>
+    <div class="chart" style="width: 400px;">
+        <h1>Total Players by Genre</h1>
+        <canvas id="players_pie_chart"></canvas>
+    </div>
+    <script>
+        const bar_chart = document.getElementById("earning_bar_chart");
 
+        new Chart(bar_chart, {
+            type: 'bar',
+            data: {
+                labels: [
+                    {% for genre in data %}
+                    "{{ genre[3] }}",
+                    {% endfor %}
+                ],
+                datasets: [{
+                    label: 'Total Earnings',
+                    data: [
+                        {% for genre in data %}
+                        Number("{{ genre[0] }}".replace(/[^0-9.-]+/g, "")),
+                        {% endfor %}
+                    ],
+                }]
+            }
+        });
+    </script>
+    <script>
+        const pie_chart = document.getElementById("players_pie_chart");
+
+        new Chart(pie_chart, {
+            type: 'pie',
+            data: {
+                labels: [
+                    {% for genre in data %}
+                    "{{ genre[3] }}",
+                    {% endfor %}
+                ],
+                datasets: [{
+                    label: 'Total Players',
+                    data: [
+                        {% for genre in data %}
+                        {{ genre[1] }},
+                        {% endfor %}
+                    ],
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+    <style>
+    .container {
+        display: flex;
+        max-width: 1240px;
+        flex-wrap: wrap;
+    }
+    .chart {
+        flex: 1;
+        max-width: 600px;
+        max-height: 400px;
+    }
+    </style>
 {% endblock %}

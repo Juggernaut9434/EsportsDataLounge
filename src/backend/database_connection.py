@@ -41,6 +41,14 @@ class Database():
             print(error)
             self.close_connection()
 
+    def get_genre_data(self):
+        try:
+            sql = f"SELECT * FROM group_genre;"
+            self.cursor.execute(sql)
+            return self.cursor.fetchall()
+        except(Exception, psycopg2.DatabaseError) as error:
+            print(error)
+            self.close_connection()
 
 if __name__ == '__main__':
     db = Database()

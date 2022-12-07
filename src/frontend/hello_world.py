@@ -17,3 +17,8 @@ def hello_world():
     print(games)
     # pass it into the render_template
     return render_template("home.html", games=games)
+
+@app.route("/genre")
+def by_genre():
+    genre_data = db.get_genre_data()
+    return render_template("genre.html", data=genre_data)

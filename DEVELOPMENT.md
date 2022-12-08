@@ -27,7 +27,7 @@ psql -c "ALTER USER user_name  WITH PASSWORD 'postgres';"
 
 ### Setup Credentials for back_end
 
-1. Create `database.ini` file that fills out this template
+1. Create `database.ini` file that fills out this template to be in main directory
 
 ```ini
 [postgresql]

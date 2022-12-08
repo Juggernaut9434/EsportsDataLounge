@@ -22,3 +22,8 @@ def hello_world():
 def by_genre():
     genre_data = db.get_genre_data()
     return render_template("genre.html", data=genre_data)
+
+@app.route("/date")
+def by_date():
+    date_data = db.get_date_data()
+    return render_template("date.html", data=date_data)

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="chart" style="width: 800px;">
+        <h1>Games made per decade</h1>
+        <canvas id="line_date"></canvas>
+    </div>
+    <script>
+        const line_chart = document.getElementById("line_date");
+
+        new Chart(line_date, {
+            type: 'line',
+            data: {
+                labels: [
+                    {% for decade in data %}
+                    "{{ decade[1] }}",
+                    {% endfor %}
+                ],
+                datasets: [{
+                    label: 'Games per Decade',
+                    data: [
+                    {% for decade in data %}
+                    "{{ decade[0] }}",
+                    {% endfor %}
+                    ],
+                }]
+            }
+        })
+    </script>
+{% endblock %}

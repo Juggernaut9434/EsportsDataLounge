@@ -50,6 +50,16 @@ class Database():
             print(error)
             self.close_connection()
 
+    def get_date_data(self):
+        try:
+            sql = f"SELECT count(*), (releasedate / 10 * 10) r FROM esportsearnings GROUP BY  r order by r asc;"
+            self.cursor.execute(sql)
+            return self.cursor.fetchall()
+        except(Exception, psycopg2.DatabaseError) as error:
+            print(error)
+            self.close_connection()
+
+
 if __name__ == '__main__':
     db = Database()
     db.close_connection()
